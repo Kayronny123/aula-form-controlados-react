@@ -4,15 +4,15 @@ const useForm = (initialState) => {
   const [form, setForm] = useState(initialState);
 
   const onChange = (event) => {
-    const { name, idade, email, profissao, value } = event.target;
+    const { name, value } = event.target.value;
     setForm({
       ...form,
-      [name]: value,
-      [idade]: value,
-      [email]: value,
-      [profissao]: value
+      [name]: value
     });
   };
-  return [form, onChange];
+  const clear = () => {
+    setForm(initialState);
+  };
+  return [form, onChange, clear];
 };
 export default useForm;
